@@ -1,0 +1,326 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Stars Background */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 160px 120px, #ddd, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: moveStars 100s linear infinite;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+
+/* Lightspeed Effect */
+.lightspeed-container {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    perspective: 100px;
+    perspective-origin: 50% 50%;
+    transform: translateZ(0);
+}
+
+.lightspeed {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    animation: lightspeed-stars 0.5s linear infinite;
+}
+
+.lightspeed:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: lightspeed-stars 1s linear infinite;
+    background: 
+        radial-gradient(2px 2px at var(--x1) var(--y1), #fff, rgba(0,0,0,0)) 50% 50% / 150px 150px,
+        radial-gradient(2px 2px at var(--x2) var(--y2), #fff, rgba(0,0,0,0)) 50% 50% / 150px 150px,
+        radial-gradient(2px 2px at var(--x3) var(--y3), #fff, rgba(0,0,0,0)) 50% 50% / 150px 150px,
+        radial-gradient(2px 2px at var(--x4) var(--y4), #fff, rgba(0,0,0,0)) 50% 50% / 150px 150px,
+        radial-gradient(2px 2px at var(--x5) var(--y5), #fff, rgba(0,0,0,0)) 50% 50% / 150px 150px;
+    background-repeat: repeat;
+    transform: translateZ(0);
+}
+
+/* Earth Animation */
+.earth {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform-style: preserve-3d;
+    transform: translate(-50%, -50%);
+    animation: rotateEarth 60s linear infinite, float 6s ease-in-out infinite;
+    will-change: transform;
+}
+
+.earth-sphere {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: url('https://eoimages.gsfc.nasa.gov/images/imagerecords/57000/57730/land_ocean_ice_8192.png');
+    background-size: cover;
+    box-shadow: 
+        inset 0 0 50px rgba(0,0,0,0.8),
+        inset 20px 0 50px rgba(0,0,0,0.5),
+        inset -20px 0 50px rgba(0,0,0,0.5),
+        0 0 50px #4B70E2,
+        -10px 0 100px rgba(75,112,226,0.3),
+        10px 0 100px rgba(75,112,226,0.3);
+    animation: rotateTexture 60s linear infinite;
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* Container and Content Styles */
+.container {
+    max-width: 800px;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 1;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: opacity 0.5s ease;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
+}
+
+.typed-text {
+    font-size: 1.5rem;
+    min-height: 3rem;
+    margin-bottom: 2rem;
+}
+
+/* Button Styles */
+.button-container {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #000;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    transform: translateY(-2px);
+    background-color: white;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.contact-button {
+    background-color: rgba(75, 112, 226, 0.9);
+    color: white;
+}
+
+.contact-button:hover {
+    background-color: rgb(75, 112, 226);
+    color: white;
+}
+
+/* About Page Specific Styles */
+body.about-page {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    align-items: flex-start !important;
+    height: auto !important;
+    padding: 20px 0;
+}
+
+.about-page .container {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 800px;
+    max-height: none;
+    height: auto;
+    overflow-y: visible;
+}
+
+.about-page .content {
+    line-height: 1.6;
+    margin: 2rem 0;
+    text-align: left;
+    height: auto;
+    overflow: visible;
+    padding-bottom: 2rem;
+}
+
+.content p {
+    margin-bottom: 1rem;
+}
+
+.content ul {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.content li {
+    margin-bottom: 0.5rem;
+}
+
+.about-page .earth-container {
+    opacity: 0.3;
+}
+
+/* Custom Scrollbar */
+.about-page .container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.about-page .container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.about-page .container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.about-page .container::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* Keep your existing animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes moveStars {
+    from { transform: translateY(0) translateZ(0); }
+    to { transform: translateY(-1000px) translateZ(0); }
+}
+
+@keyframes rotateEarth {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes rotateTexture {
+    0% { background-position: 0% center; transform: translateZ(0); }
+    100% { background-position: 200% center; transform: translateZ(0); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(-50%, -50%) translateZ(0); }
+    50% { transform: translate(-50%, -52%) translateZ(0); }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes lightspeed-stars {
+    0% {
+        transform: translateZ(0px);
+        opacity: 0;
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateZ(100px);
+        opacity: 0;
+    }
+}
+
+/* Update Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .about-page .container {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .earth {
+        width: 300px;
+        height: 300px;
+    }
+
+    .about-page .earth-container {
+        opacity: 0.2;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .content {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-height: 600px) {
+    body.about-page {
+        padding: 10px 0;
+    }
+    
+    .about-page .container {
+        margin: 10px auto;
+    }
+}

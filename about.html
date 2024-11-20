@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Ethan Hsu</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js.main.js" defer></script>
+</head>
+<body class="about-page">
+    <div class="stars"></div>
+    <div class="stars:before"></div>
+    <div class="earth-container">
+        <div class="earth">
+            <div class="earth-sphere"></div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>About Me</h1>
+        <div class="content">
+            <p>Hi there! 👋 I'm Ethan Hsu.</p>
+            <br>
+            <p>I'm a junior student-athlete at Princeton University studying Operations Research and Computer Science. Growing up in the Bay Area (California), I was always surrounded by technology and innovation. I thrive on turning complex problems into intuitive solutions. Whether I am in school or on the field, I bring the same level of dedication and passion to everything I do.</p>
+            <br>
+            <p>🚀 <strong>What I am currently doing:</strong></p>
+            <ul style="text-align: left; margin-left: 20px; margin-top: 10px;">
+                <li>Full-Stack Development</li>
+                <li>Recruiting for internships</li>
+                <li>Working on my Junior Independent Research</li>
+                <li>Division 1 Pitcher</li>
+                <li>Currently making this website!</li>
+            </ul>
+            <br>
+            <p>🎯 <strong>My Philosophy:</strong></p>
+            <p>I believe in continuous learning and pushing boundaries. Every challenge is an opportunity to grow and innovate.</p>
+            <br>
+            <p>🌟 <strong>Beyond Coding:</strong></p>
+            <p>When I'm not immersed in code, you can find me:</p>
+            <ul style="text-align: left; margin-left: 20px; margin-top: 10px;">
+                <li>Training on the baseball field</li>
+                <li>Exploring new AIs and LLMs</li>
+                <li>Solving complex graph theory problems</li>
+                <li>Watching sports and hanging out with the fellas</li>
+            </ul>
+        </div>
+        <div class="button-container">
+            <a href="index.html" class="button">Back Home</a>
+            <a href="#" class="button">Resume</a>
+            <a href="#" class="button contact-button">Contact Me</a>
+        </div>
+    </div>
+
+    <script>
+        // Initialize page with fade-in effect
+        window.addEventListener('load', function() {
+            const container = document.querySelector('.container');
+            container.style.opacity = '0';
+            
+            setTimeout(() => {
+                container.style.opacity = '1';
+                container.style.transition = 'opacity 1s ease-in';
+            }, 100);
+
+            // Add smooth transition when leaving the page
+            document.querySelector('a[href="index.html"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                container.style.opacity = '0';
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
